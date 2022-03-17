@@ -32,13 +32,13 @@ namespace Folder_Crawling
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gbx_input = new System.Windows.Forms.GroupBox();
+            this.rdb_dfs = new System.Windows.Forms.RadioButton();
+            this.rdb_bfs = new System.Windows.Forms.RadioButton();
+            this.txb_file_name = new System.Windows.Forms.TextBox();
+            this.lbl_file_name = new System.Windows.Forms.Label();
             this.btn_browse = new System.Windows.Forms.Button();
             this.lbl_folder = new System.Windows.Forms.Label();
             this.gbx_output = new System.Windows.Forms.GroupBox();
-            this.lbl_file_name = new System.Windows.Forms.Label();
-            this.txb_file_name = new System.Windows.Forms.TextBox();
-            this.rdb_bfs = new System.Windows.Forms.RadioButton();
-            this.rdb_dfs = new System.Windows.Forms.RadioButton();
             this.gbx_input.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,44 @@ namespace Folder_Crawling
             this.gbx_input.TabStop = false;
             this.gbx_input.Text = "Input";
             // 
+            // rdb_dfs
+            // 
+            this.rdb_dfs.AutoSize = true;
+            this.rdb_dfs.Location = new System.Drawing.Point(12, 218);
+            this.rdb_dfs.Name = "rdb_dfs";
+            this.rdb_dfs.Size = new System.Drawing.Size(55, 20);
+            this.rdb_dfs.TabIndex = 5;
+            this.rdb_dfs.TabStop = true;
+            this.rdb_dfs.Text = "DFS";
+            this.rdb_dfs.UseVisualStyleBackColor = true;
+            // 
+            // rdb_bfs
+            // 
+            this.rdb_bfs.AutoSize = true;
+            this.rdb_bfs.Location = new System.Drawing.Point(12, 191);
+            this.rdb_bfs.Name = "rdb_bfs";
+            this.rdb_bfs.Size = new System.Drawing.Size(54, 20);
+            this.rdb_bfs.TabIndex = 4;
+            this.rdb_bfs.TabStop = true;
+            this.rdb_bfs.Text = "BFS";
+            this.rdb_bfs.UseVisualStyleBackColor = true;
+            // 
+            // txb_file_name
+            // 
+            this.txb_file_name.Location = new System.Drawing.Point(6, 123);
+            this.txb_file_name.Name = "txb_file_name";
+            this.txb_file_name.Size = new System.Drawing.Size(185, 22);
+            this.txb_file_name.TabIndex = 3;
+            // 
+            // lbl_file_name
+            // 
+            this.lbl_file_name.AutoSize = true;
+            this.lbl_file_name.Location = new System.Drawing.Point(6, 103);
+            this.lbl_file_name.Name = "lbl_file_name";
+            this.lbl_file_name.Size = new System.Drawing.Size(66, 16);
+            this.lbl_file_name.TabIndex = 2;
+            this.lbl_file_name.Text = "File name";
+            // 
             // btn_browse
             // 
             this.btn_browse.Location = new System.Drawing.Point(12, 64);
@@ -78,7 +116,7 @@ namespace Folder_Crawling
             this.lbl_folder.AutoSize = true;
             this.lbl_folder.Location = new System.Drawing.Point(6, 44);
             this.lbl_folder.Name = "lbl_folder";
-            this.lbl_folder.Size = new System.Drawing.Size(48, 17);
+            this.lbl_folder.Size = new System.Drawing.Size(46, 16);
             this.lbl_folder.TabIndex = 0;
             this.lbl_folder.Text = "Folder";
             // 
@@ -90,44 +128,6 @@ namespace Folder_Crawling
             this.gbx_output.TabIndex = 3;
             this.gbx_output.TabStop = false;
             this.gbx_output.Text = "Output";
-            // 
-            // lbl_file_name
-            // 
-            this.lbl_file_name.AutoSize = true;
-            this.lbl_file_name.Location = new System.Drawing.Point(6, 103);
-            this.lbl_file_name.Name = "lbl_file_name";
-            this.lbl_file_name.Size = new System.Drawing.Size(69, 17);
-            this.lbl_file_name.TabIndex = 2;
-            this.lbl_file_name.Text = "File name";
-            // 
-            // txb_file_name
-            // 
-            this.txb_file_name.Location = new System.Drawing.Point(6, 123);
-            this.txb_file_name.Name = "txb_file_name";
-            this.txb_file_name.Size = new System.Drawing.Size(185, 22);
-            this.txb_file_name.TabIndex = 3;
-            // 
-            // rdb_bfs
-            // 
-            this.rdb_bfs.AutoSize = true;
-            this.rdb_bfs.Location = new System.Drawing.Point(12, 191);
-            this.rdb_bfs.Name = "rdb_bfs";
-            this.rdb_bfs.Size = new System.Drawing.Size(55, 21);
-            this.rdb_bfs.TabIndex = 4;
-            this.rdb_bfs.TabStop = true;
-            this.rdb_bfs.Text = "BFS";
-            this.rdb_bfs.UseVisualStyleBackColor = true;
-            // 
-            // rdb_dfs
-            // 
-            this.rdb_dfs.AutoSize = true;
-            this.rdb_dfs.Location = new System.Drawing.Point(12, 218);
-            this.rdb_dfs.Name = "rdb_dfs";
-            this.rdb_dfs.Size = new System.Drawing.Size(56, 21);
-            this.rdb_dfs.TabIndex = 5;
-            this.rdb_dfs.TabStop = true;
-            this.rdb_dfs.Text = "DFS";
-            this.rdb_dfs.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

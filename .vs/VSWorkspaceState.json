@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\bin",
+    "\\bin\\Debug",
+    "\\bin\\Release",
+    "\\obj",
+    "\\src"
   ],
+  "SelectedNode": "\\Folder Crawling.sln",
   "PreviewInSolutionExplorer": false
 }

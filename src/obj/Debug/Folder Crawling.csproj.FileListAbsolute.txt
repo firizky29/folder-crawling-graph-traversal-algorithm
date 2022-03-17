@@ -1,0 +1,11 @@
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Folder Crawling.exe.config
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Folder Crawling.exe
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Folder Crawling.pdb
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder Crawling.csproj.AssemblyReference.cache
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder Crawling.csproj.SuggestedBindingRedirects.cache
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder_Crawling.Form1.resources
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder_Crawling.Resources.resources
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder Crawling.csproj.GenerateResource.cache
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder Crawling.csproj.CoreCompileInputs.cache
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder Crawling.exe
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\src\obj\Debug\Folder Crawling.pdb
