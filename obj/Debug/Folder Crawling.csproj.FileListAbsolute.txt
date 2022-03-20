@@ -9,3 +9,8 @@ C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\obj\Debug\Fol
 C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.CoreCompileInputs.cache
 C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\obj\Debug\Folder Crawling.exe
 C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\obj\Debug\Folder Crawling.pdb
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\AutomaticGraphLayout.dll
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\AutomaticGraphLayout.Drawing.dll
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
+C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.CopyComplete
