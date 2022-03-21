@@ -88,7 +88,7 @@ namespace Folder_Crawling.src.Graph
             if (pathName[p] == to)
             { 
                 this.path.Add(path);
-                return true;
+                ret = true; // kalau yang dicari cuma leaves, ganti jadi return true;
             }
             foreach(var e in g.FindNode(p).OutEdges)
             {
