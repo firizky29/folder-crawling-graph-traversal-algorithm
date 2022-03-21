@@ -11,14 +11,14 @@ namespace Folder_Crawling.src.Graph
         private Microsoft.Msagl.Drawing.Graph tree;
         private Dictionary<string, string> pathId;
         private Dictionary<string, string> pathName;
-        private string path;
+        private List<string> path;
 
         public Graph(string root, Dictionary<string, List<string>> adjList)
         {
             tree = new Microsoft.Msagl.Drawing.Graph("graph");
             pathId = new Dictionary<string, string>();
             pathName = new Dictionary<string, string>();
-            path = "";
+            path = new List<string>();
             char[] delim = {'\\'};
             tree.AddNode("0");
             tree.FindNode("0").LabelText = root.Split(delim).ToList().Last();
@@ -56,30 +56,31 @@ namespace Folder_Crawling.src.Graph
             return this.tree;
         }
 
-        public string getPath()
+        public List<string> getPath()
         {
             return this.path;
         }
 
-        public void DFS(string to)
+        public void DFS(string to, bool all)
         {
-            Dictionary<string, bool> vis = new Dictionary<string, bool>();
             Microsoft.Msagl.Drawing.Graph graph = tree;
-            this.path = pathName["0"];
-            if(!processDFS("0", to, ref vis, graph))
+            string curPath = pathName["0"];
+
+            if(!processDFS("0", to, graph, curPath, all))
             {
-                this.path = "Tidak ditemukan";
+                this.path.Clear();
+                this.path.Add("Tidak ditemukan");
             }
         }
-        private bool processDFS(string p, string to, ref Dictionary<string, bool> vis, Microsoft.Msagl.Drawing.Graph g)
+        private bool processDFS(string p, string to, Microsoft.Msagl.Drawing.Graph g, string path, bool all)
         {
             string tmp = path;
             bool ret = false;
             if (pathName[p] == to)
             {
+                this.path.Add(path);
                 return true;
             }
-            vis[p] = true;
             foreach(var e in g.FindNode(p).OutEdges)
             {
                 string q = e.Target;
@@ -89,12 +90,13 @@ namespace Folder_Crawling.src.Graph
                 }
                 path += "\\";
                 path += pathName[q];
-                if (vis.ContainsKey(q)) continue;
-                vis[q] = true;
-                if(processDFS(q, to, ref vis, g))
+                if(processDFS(q, to, g, path, all))
                 {
                     ret = true;
-                    return true;
+                    if (!all)
+                    {
+                        return true;
+                    }
                 }
                 else
                 {

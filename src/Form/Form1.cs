@@ -40,8 +40,14 @@ namespace Folder_Crawling
             list.Add("C:\\D", list3);
             Graph g = new Graph("C:", list);
             this.gViewer1.Graph = g.getTree();
-            g.DFS("H");
-            this.label1.Text = g.getPath();
+            g.DFS("A", false);
+            string path = "";
+            foreach(var q in g.getPath())
+            {
+                path += q;
+                path += " ";
+            }
+            this.label1.Text = path;
         }
     }
 }
