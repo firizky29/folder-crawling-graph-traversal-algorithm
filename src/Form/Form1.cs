@@ -28,16 +28,6 @@ namespace Folder_Crawling
 
         }
 
-        private void btn_browse_Click(object sender, EventArgs e)
-        {
-            if (!mutexLock)
-            {
-                mutexLock = true;
-                threadStart = new ThreadStart(process);
-                thread = new Thread(threadStart);
-                thread.Start();
-            }
-        }
 
         public void processGraph(Microsoft.Msagl.Drawing.Graph g)
         {
@@ -78,6 +68,17 @@ namespace Folder_Crawling
         public void updateGraph(Microsoft.Msagl.Drawing.Graph g)
         {
             this.gViewer1.Graph=g;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!mutexLock)
+            {
+                mutexLock = true;
+                threadStart = new ThreadStart(process);
+                thread = new Thread(threadStart);
+                thread.Start();
+            }
         }
     }
 }
