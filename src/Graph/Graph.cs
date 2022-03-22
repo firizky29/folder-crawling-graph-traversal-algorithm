@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CColor = System.Drawing.Color;
+
 
 namespace Folder_Crawling.src.Graph
 {
@@ -167,50 +169,62 @@ namespace Folder_Crawling.src.Graph
         public void BFS(string to, bool all)
         {
             Microsoft.Msagl.Drawing.Graph graph = tree;
+            Dictionary<string, int> idLifeChild = new Dictionary<string, int>();
             string rootId = "0";
             Queue<string> qu = new Queue<string>();
             qu.Enqueue(rootId);
             while(qu.Count > 0)
             {
                 string u = qu.Dequeue();
-                setDarkGreen(graph, u);
+                setNodeColor(graph, u, "DarkBlue");
+                bool sol = false;
                 if(pathName[u]==to)
                 {
+                    sol = true;
                     this.path.Add(idPath[u]);
-                    string sol = u;
-                    while(sol != rootId)
-                    {
-                        foreach(var e in graph.FindNode(sol).InEdges)
-                        {
-                            backtrack(graph, e, true);
-                            sol = e.Source;
-                        }
-                    }
-                    graph.FindNode(rootId).Attr.FillColor = Microsoft.Msagl.Drawing.Color.LightGreen;
+                    setNodeColor(graph, u, "LightGreen");
                     if (!all) return;
-                    continue;
                 }
-                foreach(var e in graph.FindNode(u).OutEdges)
+                if(graph.FindNode(u).OutEdges.Count() >0)
                 {
-                    string v = e.Target;
-                    advance(graph, e);
-                    qu.Enqueue(v);
-                    backtrack(graph, e, true);
+                    idLifeChild[u] = graph.FindNode(u).OutEdges.Count();
+                    foreach (var e in graph.FindNode(u).OutEdges)
+                    {
+                        string v = e.Target;
+                        e.IsVisible = true;
+                        graph.FindNode(v).IsVisible = true;
+                        setNodeColor(graph, v, "LightBlue");
+                        qu.Enqueue(v);
+                        //backtrack(graph, e, true);
+                    }
+                    setNodeColor(graph, u, "LightGreen");
+                } else // daun
+                {
+                    if(!sol)
+                    {
+                        while(u!=rootId && pathName[u]!=to)
+                        {
+                            graph.FindNode(u).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+                            Microsoft.Msagl.Drawing.Edge e = graph.FindNode(u).InEdges.First();
+                            u = e.Source;
+                            idLifeChild[u]--;
+                            if (idLifeChild[u] != 0) break;
+                        }
+                        if(idLifeChild[u]==0 && pathName[u]!=to) // u = rootId dan bukan solusi
+                        {
+                            graph.FindNode(u).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+                        }
+                        this.form.processGraph(graph);
+                        Thread.Sleep(500);
+                    }
                 }
-                setRed(graph, u);
             }
         }
 
-        private void setDarkGreen(Microsoft.Msagl.Drawing.Graph g, string node)
+        private void setNodeColor(Microsoft.Msagl.Drawing.Graph g, string node, string color)
         {
-            g.FindNode(node).Attr.FillColor = Microsoft.Msagl.Drawing.Color.DarkGreen;
-            this.form.processGraph(g);
-            Thread.Sleep(500);
-        }
-
-        private void setRed(Microsoft.Msagl.Drawing.Graph g, string node)
-        {
-            g.FindNode(node).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+            CColor c = CColor.FromName(color);
+            g.FindNode(node).Attr.FillColor = new Microsoft.Msagl.Drawing.Color(c.A, c.R, c.G, c.B);
             this.form.processGraph(g);
             Thread.Sleep(500);
         }
