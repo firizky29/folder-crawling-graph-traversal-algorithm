@@ -14,3 +14,19 @@ C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Aut
 C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
 C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
 C:\Users\Firizky Ardiansyah\Documents\GitHub\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.CopyComplete
+D:\stima-folder-crawling\bin\Debug\Folder Crawling.exe.config
+D:\stima-folder-crawling\bin\Debug\Folder Crawling.exe
+D:\stima-folder-crawling\bin\Debug\Folder Crawling.pdb
+D:\stima-folder-crawling\bin\Debug\AutomaticGraphLayout.dll
+D:\stima-folder-crawling\bin\Debug\AutomaticGraphLayout.Drawing.dll
+D:\stima-folder-crawling\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+D:\stima-folder-crawling\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.AssemblyReference.cache
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.SuggestedBindingRedirects.cache
+D:\stima-folder-crawling\obj\Debug\Folder_Crawling.Form1.resources
+D:\stima-folder-crawling\obj\Debug\Folder_Crawling.Properties.Resources.resources
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.GenerateResource.cache
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.CoreCompileInputs.cache
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.csproj.CopyComplete
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.exe
+D:\stima-folder-crawling\obj\Debug\Folder Crawling.pdb

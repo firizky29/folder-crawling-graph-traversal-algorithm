@@ -12,6 +12,7 @@ namespace Folder_Crawling.src.Graph
         private Microsoft.Msagl.Drawing.Graph tree;
         private Dictionary<string, string> pathId;
         private Dictionary<string, string> pathName;
+        private Dictionary<string, string> idPath;
         private List<string> path;
         private Form1 form;
 
@@ -20,6 +21,7 @@ namespace Folder_Crawling.src.Graph
             this.tree = new Microsoft.Msagl.Drawing.Graph("graph");
             this.pathId = new Dictionary<string, string>();
             this.pathName = new Dictionary<string, string>();
+            this.idPath = new Dictionary<string, string>();
             this.path = new List<string>();
             this.form = form;
 
@@ -27,6 +29,7 @@ namespace Folder_Crawling.src.Graph
             tree.AddNode("0");
             tree.FindNode("0").LabelText = root.Split(delim).ToList().Last();
             pathId[root] = "0";
+            idPath["0"] = root;
             pathName["0"] = root.Split(delim).ToList().Last(); ;
             Queue<string> queue = new Queue<string>();
             queue.Enqueue(root);
@@ -47,6 +50,7 @@ namespace Folder_Crawling.src.Graph
                     tree.FindNode(j.ToString()).LabelText = q;
                     tree.FindNode(j.ToString()).IsVisible = false;
                     pathId[adj] = j.ToString();
+                    idPath[j.ToString()] = adj;
                     pathName[j.ToString()] = q;
                     tree.AddEdge(par, j.ToString()).IsVisible = false;
                     queue.Enqueue(adj);
@@ -156,6 +160,57 @@ namespace Folder_Crawling.src.Graph
             {
                 g.FindNode(finalNode).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
             }
+            this.form.processGraph(g);
+            Thread.Sleep(500);
+        }
+
+        public void BFS(string to, bool all)
+        {
+            Microsoft.Msagl.Drawing.Graph graph = tree;
+            string rootId = "0";
+            Queue<string> qu = new Queue<string>();
+            qu.Enqueue(rootId);
+            while(qu.Count > 0)
+            {
+                string u = qu.Dequeue();
+                setDarkGreen(graph, u);
+                if(pathName[u]==to)
+                {
+                    this.path.Add(idPath[u]);
+                    string sol = u;
+                    while(sol != rootId)
+                    {
+                        foreach(var e in graph.FindNode(sol).InEdges)
+                        {
+                            backtrack(graph, e, true);
+                            sol = e.Source;
+                        }
+                    }
+                    graph.FindNode(rootId).Attr.FillColor = Microsoft.Msagl.Drawing.Color.LightGreen;
+                    if (!all) return;
+                    continue;
+                }
+                foreach(var e in graph.FindNode(u).OutEdges)
+                {
+                    string v = e.Target;
+                    advance(graph, e);
+                    qu.Enqueue(v);
+                    backtrack(graph, e, true);
+                }
+                setRed(graph, u);
+            }
+        }
+
+        private void setDarkGreen(Microsoft.Msagl.Drawing.Graph g, string node)
+        {
+            g.FindNode(node).Attr.FillColor = Microsoft.Msagl.Drawing.Color.DarkGreen;
+            this.form.processGraph(g);
+            Thread.Sleep(500);
+        }
+
+        private void setRed(Microsoft.Msagl.Drawing.Graph g, string node)
+        {
+            g.FindNode(node).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
             this.form.processGraph(g);
             Thread.Sleep(500);
         }

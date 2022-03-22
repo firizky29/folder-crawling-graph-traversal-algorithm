@@ -53,7 +53,7 @@ namespace Folder_Crawling
             list3.Add("C:\\D\\A");
             list.Add("C:\\D", list3);
             Graph g = new Graph(this, "C:", list);
-            g.DFS("D", true);
+            g.BFS("A", true);
             //string path = "";
             //foreach (var q in g.getPath())
             //{
