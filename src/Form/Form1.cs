@@ -172,7 +172,14 @@ namespace Folder_Crawling
 
         private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(e.LinkText);
+            string child = e.LinkText;
+            int i;
+            for(i=child.Length-1; i>=0;i--)
+            {
+                if (child[i] == '\\') break;
+            }
+            string parent = child.Substring(0, i);
+            System.Diagnostics.Process.Start(parent);
             //var filePath = new Uri(e.LinkText).AbsolutePath;
         }
     }
