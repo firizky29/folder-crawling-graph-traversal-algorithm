@@ -96,7 +96,7 @@ namespace Folder_Crawling.src.Graph
             bool ret = false;
             if (pathName[p] == to)
             { 
-                this.path.Add(path);
+                this.path.Add(idPath[p]);
                 ret = true; // kalau yang dicari cuma leaves, ganti jadi return true;
             }
             foreach(var e in g.FindNode(p).OutEdges)

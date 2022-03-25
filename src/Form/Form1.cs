@@ -49,7 +49,7 @@ namespace Folder_Crawling
                 bool all = checkBox1.Checked;
                 Dictionary<string, List<string>> list = new Dictionary<string, List<string>>();
                 string path_root = textBox1.Text;
-                if(path_root == this.pathRoot)
+                if (path_root == this.pathRoot)
                 {
                     // dont do anything
                 }
@@ -110,6 +110,27 @@ namespace Folder_Crawling
             {
                 this.elapsedTimeLabel.Text = ts.TotalSeconds.ToString() + " s";
             }
+
+            if (this.richTextBox1.InvokeRequired)
+            {
+                this.richTextBox1.Invoke(new MethodInvoker(delegate {
+                    richTextBox1.Text = "";
+                    foreach (string path in this.g.getPath())
+                    {
+                        richTextBox1.Text += "file:\\\\" + path + "\n";
+                    
+                    }  
+                    }));
+            }
+            else
+            {
+                richTextBox1.Text = "";
+                foreach (string path in this.g.getPath())
+                {
+                    richTextBox1.Text += "file:\\\\" + path + "\n";
+
+                }
+            }
             mutexLock = false;
         }
         public void updateGraph(Microsoft.Msagl.Drawing.Graph gp)
@@ -144,6 +165,17 @@ namespace Folder_Crawling
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             this.g.setDelay(this.trackBar1.Value);
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+            //var filePath = new Uri(e.LinkText).AbsolutePath;
         }
     }
 }

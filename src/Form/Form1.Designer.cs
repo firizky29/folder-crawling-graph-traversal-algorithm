@@ -55,6 +55,7 @@ namespace Folder_Crawling
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_time = new System.Windows.Forms.Label();
             this.elapsedTimeLabel = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -274,7 +275,7 @@ namespace Folder_Crawling
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(397, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.Size = new System.Drawing.Size(62, 17);
             this.label6.TabIndex = 23;
             this.label6.Text = "1000 ms";
             // 
@@ -284,7 +285,7 @@ namespace Folder_Crawling
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(11, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 16);
+            this.label5.Size = new System.Drawing.Size(54, 17);
             this.label5.TabIndex = 22;
             this.label5.Text = "100 ms";
             // 
@@ -348,6 +349,16 @@ namespace Folder_Crawling
             this.elapsedTimeLabel.Size = new System.Drawing.Size(0, 20);
             this.elapsedTimeLabel.TabIndex = 26;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(14, 351);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(176, 107);
+            this.richTextBox1.TabIndex = 28;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
+            // 
             // Form1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -356,6 +367,7 @@ namespace Folder_Crawling
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(936, 782);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.elapsedTimeLabel);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.button2);
@@ -415,6 +427,7 @@ namespace Folder_Crawling
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.Label elapsedTimeLabel;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
