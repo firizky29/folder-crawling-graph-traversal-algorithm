@@ -196,6 +196,7 @@ namespace Folder_Crawling
             this.trackBar1.Size = new System.Drawing.Size(318, 56);
             this.trackBar1.TabIndex = 15;
             this.trackBar1.Value = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // radioButton1
             // 
@@ -272,7 +273,7 @@ namespace Folder_Crawling
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(397, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 17);
+            this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 23;
             this.label6.Text = "1000 ms";
             // 
@@ -282,7 +283,7 @@ namespace Folder_Crawling
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(11, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 17);
+            this.label5.Size = new System.Drawing.Size(49, 16);
             this.label5.TabIndex = 22;
             this.label5.Text = "100 ms";
             // 

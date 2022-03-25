@@ -19,6 +19,7 @@ namespace Folder_Crawling
         private bool mutexLock;
         ThreadStart threadStart;
         Thread thread;
+        Graph g;
         public Form1()
         {
             InitializeComponent();
@@ -84,14 +85,14 @@ namespace Folder_Crawling
             list3.Add("C:\\D\\A");
             list.Add("C:\\D", list3);
             */
-            Graph g = new Graph(this, path_root, list);
+            this.g = new Graph(this, path_root, list);
             if (radioButton1.Checked)
             {
-                g.DFS(nama_file, all);
+                this.g.DFS(nama_file, all);
             }
             else
             {
-                g.BFS(nama_file, all);
+                this.g.BFS(nama_file, all);
             }
             //string path = "";
             //foreach (var q in g.getPath())
@@ -104,9 +105,9 @@ namespace Folder_Crawling
 
             mutexLock = false;
         }
-        public void updateGraph(Microsoft.Msagl.Drawing.Graph g)
+        public void updateGraph(Microsoft.Msagl.Drawing.Graph gp)
         {
-            this.gViewer1.Graph=g;
+            this.gViewer1.Graph=gp;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -131,6 +132,11 @@ namespace Folder_Crawling
                 textBox1.Text = folderDlg.SelectedPath;
                 Environment.SpecialFolder root = folderDlg.RootFolder;
             }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            this.g.setDelay(this.trackBar1.Value);
         }
     }
 }

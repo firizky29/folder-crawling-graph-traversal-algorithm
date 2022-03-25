@@ -17,6 +17,7 @@ namespace Folder_Crawling.src.Graph
         private Dictionary<string, string> idPath;
         private List<string> path;
         private Form1 form;
+        private int delay;
 
         public Graph(Form1 form, string root, Dictionary<string, List<string>> adjList)
         {
@@ -26,6 +27,7 @@ namespace Folder_Crawling.src.Graph
             this.idPath = new Dictionary<string, string>();
             this.path = new List<string>();
             this.form = form;
+            this.delay = 100;
 
             char[] delim = {'\\'};
             tree.AddNode("0");
@@ -131,7 +133,7 @@ namespace Folder_Crawling.src.Graph
             n.Attr.FillColor = Microsoft.Msagl.Drawing.Color.DarkGreen;
             g.FindNode(e.Source).Attr.FillColor = Microsoft.Msagl.Drawing.Color.LightGreen;
             this.form.processGraph(g);
-            Thread.Sleep(500);
+            Thread.Sleep(this.delay);
         }
 
         private void backtrack(Microsoft.Msagl.Drawing.Graph g, Microsoft.Msagl.Drawing.Edge e, bool solution)
@@ -148,7 +150,7 @@ namespace Folder_Crawling.src.Graph
             }
             g.FindNode(e.Source).Attr.FillColor = Microsoft.Msagl.Drawing.Color.DarkGreen;
             this.form.processGraph(g);
-            Thread.Sleep(500);
+            Thread.Sleep(this.delay);
         }
 
 
@@ -215,7 +217,7 @@ namespace Folder_Crawling.src.Graph
                             graph.FindNode(u).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
                         }
                         this.form.processGraph(graph);
-                        Thread.Sleep(500);
+                        Thread.Sleep(this.delay);
                     }
                 }
             }
@@ -226,7 +228,11 @@ namespace Folder_Crawling.src.Graph
             CColor c = CColor.FromName(color);
             g.FindNode(node).Attr.FillColor = new Microsoft.Msagl.Drawing.Color(c.A, c.R, c.G, c.B);
             this.form.processGraph(g);
-            Thread.Sleep(500);
+            Thread.Sleep(this.delay);
+        }
+        public void setDelay(int val)
+        {
+            this.delay = val*100;
         }
     }
 }
