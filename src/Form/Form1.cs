@@ -21,11 +21,11 @@ namespace Folder_Crawling
         ThreadStart threadStart;
         Thread thread;
         Graph g;
-        String pathRoot;
+
         public Form1()
         {
             InitializeComponent();
-            this.pathRoot = "";
+            g = new Graph(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,17 +43,15 @@ namespace Folder_Crawling
         private void process()
         {
             Stopwatch stopWatch = new Stopwatch();
+
             try
             {
                 string nama_file = textBox2.Text;
                 bool all = checkBox1.Checked;
                 Dictionary<string, List<string>> list = new Dictionary<string, List<string>>();
                 string path_root = textBox1.Text;
-                if (path_root == this.pathRoot)
-                {
-                    // dont do anything
-                }
-                else if (!Directory.Exists(path_root))
+
+                if (!Directory.Exists(path_root))
                 {
                     Console.WriteLine("Path does not exist.");
                     MessageBox.Show("Path does not exist!", "Path Error",
@@ -65,7 +63,6 @@ namespace Folder_Crawling
                     string root;
                     Queue<string> q = new Queue<string>();
                     q.Enqueue(path_root);
-                    this.pathRoot = path_root;
                     while (q.Count() != 0)
                     {
                         root = q.Dequeue();
@@ -82,18 +79,18 @@ namespace Folder_Crawling
                         }
                         list.Add(root, l);
                     }
-                    this.g = new Graph(this, path_root, list);
                 }
                 
+                g = new Graph(this, path_root, list);
                 stopWatch.Start();
 
                 if (radioButton1.Checked)
                 {
-                    this.g.DFS(nama_file, all);
+                    g.DFS(nama_file, all);
                 }
                 else
                 {
-                    this.g.BFS(nama_file, all);
+                    g.BFS(nama_file, all);
                 }
             } catch (UnauthorizedAccessException ex)
             {
@@ -114,20 +111,21 @@ namespace Folder_Crawling
             if (this.richTextBox1.InvokeRequired)
             {
                 this.richTextBox1.Invoke(new MethodInvoker(delegate {
-                    richTextBox1.Text = "";
-                    foreach (string path in this.g.getPath())
+                    richTextBox1.Text = "Solution Path: \n";
+                    foreach (string path in g.getPath())
                     {
-                        richTextBox1.Text += "file:\\\\" + path + "\n";
+                        richTextBox1.Text += "- file:\\\\" + path + "\n\n";
                     
                     }  
                     }));
+                 
             }
             else
             {
                 richTextBox1.Text = "";
-                foreach (string path in this.g.getPath())
+                foreach (string path in g.getPath())
                 {
-                    richTextBox1.Text += "file:\\\\" + path + "\n";
+                    richTextBox1.Text += "- file:\\\\" + path + "\n";
 
                 }
             }
@@ -164,7 +162,7 @@ namespace Folder_Crawling
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            this.g.setDelay(this.trackBar1.Value);
+            g.setDelay(this.trackBar1.Value);
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

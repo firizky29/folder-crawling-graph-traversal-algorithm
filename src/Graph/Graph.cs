@@ -19,6 +19,16 @@ namespace Folder_Crawling.src.Graph
         private Form1 form;
         private int delay;
 
+        public Graph(Form1 form)
+        {
+            this.tree = new Microsoft.Msagl.Drawing.Graph("graph");
+            this.pathId = new Dictionary<string, string>();
+            this.pathName = new Dictionary<string, string>();
+            this.idPath = new Dictionary<string, string>();
+            this.path = new List<string>();
+            this.form = form;
+            this.delay = 100;
+        }
         public Graph(Form1 form, string root, Dictionary<string, List<string>> adjList)
         {
             this.tree = new Microsoft.Msagl.Drawing.Graph("graph");
@@ -83,7 +93,6 @@ namespace Folder_Crawling.src.Graph
             {
                 finish(graph, root, false);
                 this.path.Clear();
-                this.path.Add("Tidak ditemukan");
             }
             else
             {

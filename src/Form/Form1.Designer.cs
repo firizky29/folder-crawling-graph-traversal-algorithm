@@ -275,7 +275,7 @@ namespace Folder_Crawling
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(397, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 17);
+            this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 23;
             this.label6.Text = "1000 ms";
             // 
@@ -285,7 +285,7 @@ namespace Folder_Crawling
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(11, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 17);
+            this.label5.Size = new System.Drawing.Size(49, 16);
             this.label5.TabIndex = 22;
             this.label5.Text = "100 ms";
             // 
@@ -337,6 +337,7 @@ namespace Folder_Crawling
             // 
             this.lbl_time.AutoSize = true;
             this.lbl_time.Location = new System.Drawing.Point(22, 299);
+            this.lbl_time.MaximumSize = new System.Drawing.Size(189, 20);
             this.lbl_time.Name = "lbl_time";
             this.lbl_time.Size = new System.Drawing.Size(0, 20);
             this.lbl_time.TabIndex = 25;
@@ -345,6 +346,7 @@ namespace Folder_Crawling
             // 
             this.elapsedTimeLabel.AutoSize = true;
             this.elapsedTimeLabel.Location = new System.Drawing.Point(17, 299);
+            this.elapsedTimeLabel.MaximumSize = new System.Drawing.Size(189, 20);
             this.elapsedTimeLabel.Name = "elapsedTimeLabel";
             this.elapsedTimeLabel.Size = new System.Drawing.Size(0, 20);
             this.elapsedTimeLabel.TabIndex = 26;
@@ -353,11 +355,11 @@ namespace Folder_Crawling
             // 
             this.richTextBox1.Location = new System.Drawing.Point(14, 351);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(176, 107);
+            this.richTextBox1.Size = new System.Drawing.Size(176, 419);
             this.richTextBox1.TabIndex = 28;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // Form1
             // 
