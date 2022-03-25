@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace Folder_Crawling
 {
@@ -20,9 +21,11 @@ namespace Folder_Crawling
         ThreadStart threadStart;
         Thread thread;
         Graph g;
+        String pathRoot;
         public Form1()
         {
             InitializeComponent();
+            this.pathRoot = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,70 +42,74 @@ namespace Folder_Crawling
 
         private void process()
         {
-            // NOTE: Janlup reset graph setiap pake
-            string nama_file = textBox2.Text;
-            bool all = checkBox1.Checked;
-            Dictionary<string, List<string>> list = new Dictionary<string, List<string>>();
-            string path_root = textBox1.Text;
-            if (!Directory.Exists(path_root))
+            Stopwatch stopWatch = new Stopwatch();
+            try
             {
-                Console.WriteLine("Path does not exist.");
-            }
-            else
-            {
-                string root;
-                Queue<string> q = new Queue<string>() ;
-                q.Enqueue(path_root);
-                while (q.Count() != 0)
+                string nama_file = textBox2.Text;
+                bool all = checkBox1.Checked;
+                Dictionary<string, List<string>> list = new Dictionary<string, List<string>>();
+                string path_root = textBox1.Text;
+                if(path_root == this.pathRoot)
                 {
-                    root = q.Dequeue();
-                    //check if root is a file or folder
-                    FileAttributes att = File.GetAttributes(root);
-                    if ((att & FileAttributes.Directory) != FileAttributes.Directory) continue; // berarti root = file
-                    string[] entries = Directory.GetFileSystemEntries(root, "*", SearchOption.TopDirectoryOnly);
-                    List<string> l = new List<string>();
-                    foreach(string e in entries)
+                    // dont do anything
+                }
+                else if (!Directory.Exists(path_root))
+                {
+                    Console.WriteLine("Path does not exist.");
+                    MessageBox.Show("Path does not exist!", "Path Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    string root;
+                    Queue<string> q = new Queue<string>();
+                    q.Enqueue(path_root);
+                    this.pathRoot = path_root;
+                    while (q.Count() != 0)
                     {
-                        Console.WriteLine("root : " + root + "e : " + e);
-                        l.Add(e);
-                        q.Enqueue(e);
+                        root = q.Dequeue();
+                        //check if root is a file or folder
+                        FileAttributes att = File.GetAttributes(root);
+                        if ((att & FileAttributes.Directory) != FileAttributes.Directory) continue; // berarti root = file
+                        string[] entries = Directory.GetFileSystemEntries(root, "*", SearchOption.TopDirectoryOnly);
+                        List<string> l = new List<string>();
+                        foreach (string e in entries)
+                        {
+                            Console.WriteLine("root : " + root + "e : " + e);
+                            l.Add(e);
+                            q.Enqueue(e);
+                        }
+                        list.Add(root, l);
                     }
-                    list.Add(root, l);
+                    this.g = new Graph(this, path_root, list);
                 }
                 
-            }
-            /*
-            List<string> list2 = new List<string>();
-            list2.Add("C:\\A");
-            list2.Add("C:\\B");
-            list2.Add("C:\\C");
-            list2.Add("C:\\D");
-            list2.Add("C:\\E");
-            list2.Add("C:\\F");
-            list.Add("C:", list2);
-            List<string> list3 = new List<string>();
-            list3.Add("C:\\D\\G");
-            list3.Add("C:\\D\\A");
-            list.Add("C:\\D", list3);
-            */
-            this.g = new Graph(this, path_root, list);
-            if (radioButton1.Checked)
+                stopWatch.Start();
+
+                if (radioButton1.Checked)
+                {
+                    this.g.DFS(nama_file, all);
+                }
+                else
+                {
+                    this.g.BFS(nama_file, all);
+                }
+            } catch (UnauthorizedAccessException ex)
             {
-                this.g.DFS(nama_file, all);
+                MessageBox.Show("Permission Error! Unable to access path!", "Path Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            if (this.elapsedTimeLabel.InvokeRequired)
+            {
+                this.elapsedTimeLabel.Invoke(new MethodInvoker(delegate { this.elapsedTimeLabel.Text = ts.TotalSeconds.ToString() + " s"; }));
             }
             else
             {
-                this.g.BFS(nama_file, all);
+                this.elapsedTimeLabel.Text = ts.TotalSeconds.ToString() + " s";
             }
-            //string path = "";
-            //foreach (var q in g.getPath())
-            //{
-            //   path += q;
-            // path += " ";
-            //}
-            //this.label1.Text = path;
-
-
             mutexLock = false;
         }
         public void updateGraph(Microsoft.Msagl.Drawing.Graph gp)

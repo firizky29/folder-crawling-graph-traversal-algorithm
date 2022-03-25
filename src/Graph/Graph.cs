@@ -75,6 +75,7 @@ namespace Folder_Crawling.src.Graph
 
         public void DFS(string to, bool all)
         {
+            this.path.Clear();
             Microsoft.Msagl.Drawing.Graph graph = tree;
             string curPath = pathName["0"];
             string root = "0";
@@ -170,6 +171,7 @@ namespace Folder_Crawling.src.Graph
 
         public void BFS(string to, bool all)
         {
+            this.path.Clear();
             Microsoft.Msagl.Drawing.Graph graph = tree;
             Dictionary<string, int> idLifeChild = new Dictionary<string, int>();
             string rootId = "0";

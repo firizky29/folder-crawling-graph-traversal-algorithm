@@ -54,6 +54,7 @@ namespace Folder_Crawling
             this.label8 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_time = new System.Windows.Forms.Label();
+            this.elapsedTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -339,6 +340,14 @@ namespace Folder_Crawling
             this.lbl_time.Size = new System.Drawing.Size(0, 20);
             this.lbl_time.TabIndex = 25;
             // 
+            // elapsedTimeLabel
+            // 
+            this.elapsedTimeLabel.AutoSize = true;
+            this.elapsedTimeLabel.Location = new System.Drawing.Point(17, 299);
+            this.elapsedTimeLabel.Name = "elapsedTimeLabel";
+            this.elapsedTimeLabel.Size = new System.Drawing.Size(0, 20);
+            this.elapsedTimeLabel.TabIndex = 26;
+            // 
             // Form1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -347,6 +356,7 @@ namespace Folder_Crawling
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(936, 782);
+            this.Controls.Add(this.elapsedTimeLabel);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
@@ -404,6 +414,7 @@ namespace Folder_Crawling
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lbl_time;
+        private System.Windows.Forms.Label elapsedTimeLabel;
     }
 }
 
